@@ -27,3 +27,5 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+[![CI](https://github.com/ferdyjonathan/WebTech-Frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/ferdyjonathan/WebTech-Frontend/actions/workflows/ci.yml)
