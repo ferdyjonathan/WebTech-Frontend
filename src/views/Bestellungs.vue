@@ -1,6 +1,5 @@
 <template>
-  <h1></h1>
-  <h1>Test commit</h1>
+  <h1>This is the bestellung page</h1>
 </template>
 
 <script>
