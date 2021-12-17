@@ -1,14 +1,16 @@
 <template>
   <navbar></navbar>
+  <hello-world msg="Welcome to our laundry app!"/>
     <router-view/>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
+import HelloWorld from '@/components/HelloWorld'
 
 export default {
   name: 'App',
-  components: { Navbar }
+  components: { Navbar, HelloWorld }
 }
 </script>
 
@@ -33,4 +35,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
