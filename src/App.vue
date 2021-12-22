@@ -33,9 +33,4 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
-main{
-  background-image: url('./assets/retro-wallpapers.png');
-  background-size: cover;
-}
 </style>
