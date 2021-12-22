@@ -1,10 +1,11 @@
 <template>
-  <h1>This is the bestellung page</h1>
+  <div>This is the bestellung page</div>
 </template>
 
 <script>
 export default {
-  name: 'Bestellungs'
+  name: 'Bestellungs',
+  components: { }
 }
 </script>
 

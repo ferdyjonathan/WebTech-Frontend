@@ -4,3 +4,15 @@
     <h1></h1>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: 'Employee',
+  components: { }
+}
+</script>
+
+<style scoped>
+
+</style>

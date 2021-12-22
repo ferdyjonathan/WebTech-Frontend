@@ -1,16 +1,14 @@
 <template>
   <navbar></navbar>
-  <hello-world msg="Welcome to our laundry app!"/>
     <router-view/>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
-import HelloWorld from '@/components/HelloWorld'
 
 export default {
   name: 'App',
-  components: { Navbar, HelloWorld }
+  components: { Navbar }
 }
 </script>
 
@@ -36,4 +34,8 @@ export default {
   color: #42b983;
 }
 
+main{
+  background-image: url('./assets/retro-wallpapers.png');
+  background-size: cover;
+}
 </style>
