@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Dashboard.vue'
-import Employee from '../views/Employee.vue'
+import Dashboard from '../views/Dashboard.vue'
+import Employee from '../views/Employee'
 import Bestellungs from '../views/Bestellungs'
+import editProduct from '../views/edit-product'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/employee',
@@ -18,6 +19,11 @@ const routes = [
     path: '/bestellungs',
     name: 'Bestellungs',
     component: Bestellungs
+  },
+  {
+    path: '/bestellungs/edit/:id',
+    name: 'edit_product',
+    component: editProduct
   }
 ]
 
