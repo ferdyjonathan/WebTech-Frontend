@@ -4,8 +4,7 @@
 
 <script>
 export default {
-  name: 'Bestellungs',
-  components: { }
+  name: 'Bestellungs'
 }
 </script>
 

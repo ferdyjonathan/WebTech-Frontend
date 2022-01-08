@@ -1,8 +1,8 @@
 <template>
-  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#persons-create-offcanvas" aria-controls="#persons-create-offcanvas">
-    <i class="bi bi-person-plus-fill"></i>
+  <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#order-create-offcanvas" aria-controls="#order-create-offcanvas">
+    <i class="bi bi-order-plus-fill"></i>
   </button>
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="persons-create-offcanvas" aria-labelledby="offcanvas-label">
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="order-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
       <h5 id="offcanvas-label">Create Order</h5>
       <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -30,6 +30,13 @@
           </div>
         </div>
         <div class="mb-3">
+          <label for="totalpriceField" class="form-label">Total Price</label>
+          <input type="text" class="form-control" id="totalpriceField" v-model="totalpriceField" required>
+          <div class="invalid-feedback">
+            Please provide the Total Price.
+          </div>
+        </div>
+        <div class="mb-3">
           <label for="statusField" class="form-label">Status</label>
           <select id="statusField" class="form-select" v-model="statusField" required>
             <option value="" selected disabled>Choose...</option>
@@ -38,24 +45,14 @@
             <option value="Finish">Finish</option>
           </select>
           <div class="invalid-feedback">
-            Please provide the Order status
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="totalpriceField" class="form-label">Total Price</label>
-          <input type="text" class="form-control" id="totalpriceField" v-model="totalpriceField" required>
-          <div class="invalid-feedback">
-            Please provide the Total Price.
+            Please provide the Order status.
           </div>
         </div>
         <div class="mb-3">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="paymentField" v-model="paymentField" required>
+            <input class="form-check-input" type="checkbox" id="paymentField" v-model="paymentField">
             <label class="form-check-label" for="paymentField">
               Bezahlt
-              <div class="invalid-feedback">
-                Please select if applied
-              </div>
             </label>
           </div>
         </div>
@@ -88,54 +85,33 @@ export default {
       serverValidationMessages: []
     }
   },
-  emits: ['created'],
   methods: {
-    // async createBestellung () {
-    //   if (this.validate()) {
-    //     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/bestellungs'
-    //     const headers = new Headers()
-    //     headers.append('Content-Type', 'application/json')
-    //
-    //     const data = JSON.stringify({
-    //       name: this.nameField,
-    //       paket: this.paketField,
-    //       payment: this.paymentField,
-    //       status: this.statusField,
-    //       totalprice: this.totalpriceField
-    //     })
-    //     const requestOptions = {
-    //       method: 'POST',
-    //       headers: headers,
-    //       body: data,
-    //       redirect: 'follow'
-    //     }
-    //     const response = await fetch(endpoint, requestOptions)
-    //     await this.handleResponse(response)
-    //   }
-    // },
     createBestellung () {
-      const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL
-      const endpoint = baseUrl + '/api/bestellungs'
-      const headers = new Headers()
-      headers.append('Content-Type', 'application/json')
+      const valid = this.validate()
+      if (valid) {
+        const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL
+        const endpoint = baseUrl + '/api/bestellungs'
+        const headers = new Headers()
+        headers.append('Content-Type', 'application/json')
 
-      const data = JSON.stringify({
-        name: this.nameField,
-        paket: this.paketField,
-        payment: this.paymentField,
-        status: this.statusField,
-        totalprice: this.totalpriceField
-      })
+        const data = JSON.stringify({
+          name: this.nameField,
+          paket: this.paketField,
+          payment: this.paymentField,
+          status: this.statusField,
+          totalprice: this.totalpriceField
+        })
 
-      const requestOptions = {
-        method: 'POST',
-        headers: headers,
-        body: data,
-        redirect: 'follow'
+        const requestOptions = {
+          method: 'POST',
+          headers: headers,
+          body: data,
+          redirect: 'follow'
+        }
+
+        fetch(endpoint, requestOptions)
+          .catch(error => console.log('error', error))
       }
-
-      fetch(endpoint, requestOptions)
-        .catch(error => console.log('error', error))
     },
     async handleResponse (response) {
       if (response.ok) {
@@ -151,9 +127,24 @@ export default {
       }
     },
     validate () {
-      const form = document.getElementById('order-create-form')
-      form.classList.add('was-validated')
-      return form.checkValidity()
+      let valid = true
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              valid = false
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+      return valid
     }
   }
 }
