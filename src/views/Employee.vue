@@ -1,8 +1,19 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-    <h1></h1>
+    <head>
+      <title>Site is down for maintenance</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
   </div>
+  <body>
+  <article>
+    <h1>Site is temporarily unavailable.</h1>
+    <p>Scheduled maintenance is currently in progress. Please check back soon.</p>
+    <p>We apologize for any inconvenience.</p>
+  </article>
+  </body>
+
 </template>
 
 <script>
@@ -14,5 +25,12 @@ export default {
 </script>
 
 <style scoped>
-
+body { text-align: center; padding: 10%; font: 20px Helvetica, sans-serif; color: #333; }
+h1 { font-size: 50px; margin: 0; }
+article { display: block; text-align: left; max-width: 650px; margin: 0 auto; }
+a { color: #dc8100; text-decoration: none; }
+a:hover { color: #333; text-decoration: none; }
+@media only screen and (max-width : 480px) {
+  h1 { font-size: 40px; }
+}
 </style>
