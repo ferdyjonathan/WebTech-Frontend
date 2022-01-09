@@ -76,7 +76,9 @@ export default {
       }).catch(error => console.log('error', error))
     },
     getProduct: function () {
-      axios.get('http://localhost:8080/api/bestellungs/' + this.$route.params.id)
+      const baseUrl = process.env.VUE_APP_BACKEND_BASE_URL
+      const endpoint = baseUrl + '/api/bestellungs'
+      axios.get(endpoint + this.$route.params.id)
         .then((response) => {
           this.bestellung = response.body
         }, (response) => {
