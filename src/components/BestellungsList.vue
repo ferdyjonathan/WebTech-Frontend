@@ -22,7 +22,6 @@
       <td>
       <router-link :to="{ name: 'edit_product', params: { id: bestellung.id }}" class="btn btn-danger">Edit</router-link>
       <router-link :to="{ name: 'delete_product', params: { id: bestellung.id }}" class="btn btn-danger">Delete</router-link></td>
-<!--      <button class="btn btn-danger" v-on:click="deleteOrder(index)">Delete</button>-->
     </tr>
     </tbody>
   </table>
