@@ -1,6 +1,6 @@
 <template>
   <div id="update-product">
-    <h1>Update Product</h1>
+    <h1>Update Order</h1>
 
     <p><router-link :to="{ name: 'Dashboard' }">Return to Order</router-link></p>
 
@@ -59,7 +59,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'edit-product',
+  name: 'edit-order',
   data () {
     return {
       bestellung: {}
@@ -93,5 +93,7 @@ export default {
 </script>
 
 <style scoped>
-
+h1 {
+  font-size: 30px; /* 40px/16=2.5em */
+}
 </style>

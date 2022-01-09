@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Employee from '../views/Employee'
 import Bestellungs from '../views/Bestellungs'
-import editProduct from '../views/edit-product'
+import editOrder from '../views/edit-order'
+import deleteOrder from '../views/delete-order'
 
 const routes = [
   {
@@ -23,7 +24,12 @@ const routes = [
   {
     path: '/bestellungs/edit/:id',
     name: 'edit_product',
-    component: editProduct
+    component: editOrder
+  },
+  {
+    path: '/bestellungs/delete/:id',
+    name: 'delete_product',
+    component: deleteOrder
   }
 ]
 
